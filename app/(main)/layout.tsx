@@ -11,12 +11,16 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { GraduationCapIcon } from "@/components/SVGs";
 import { IoChatboxEllipses } from "react-icons/io5";
 import { GoBellFill } from "react-icons/go";
-import NavItem from "@/components/NavItem";
+import NavItem, {NavItemProps} from "@/components/NavItem";
 import { getServerSession } from "next-auth/next";
 import AutoHome from "@/components/AutoHome";
 import Logout from "@/components/Logout";
 
 // const session = { user: { name: "Kau Doe", email: "john@example.com" } };
+const NavLinks: NavItemProps[] = [
+  { link: "https://theconnect.vercel.app/lobby", icon: <IoChatboxEllipses /> },
+  { link: "/feed", icon: <GoBellFill /> },
+];
 
 export default async function MainLayout({
   children,
@@ -35,9 +39,9 @@ export default async function MainLayout({
         <Link href="/feed" className="flex items-center gap-2" prefetch={false}>
           <GraduationCapIcon className="h-6 w-6 text-primary" />
         </Link>
-        <nav className="flex items-center gap-4 md:gap-6">
-          {[<GoBellFill />, <IoChatboxEllipses />].map((item, index) => (
-            <NavItem key={index} icon={item} />
+        <nav className="flex items-center gap-4 md:gap-6 bg-red-500">
+          {NavLinks.map((item, index) => (
+            <NavItem key={index} icon={item.icon} link={item.link} />
           ))}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

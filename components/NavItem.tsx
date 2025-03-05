@@ -1,14 +1,15 @@
 import Link from "next/link";
 import React from "react";
 
-interface NavItemProps {
+export interface NavItemProps {
+  link: string;
   icon: React.ReactNode;
   className?: string;
 }
 
-function NavItem({ className, icon }: NavItemProps) {
+function NavItem({ link, className, icon }: NavItemProps) {
   return (
-    <Link className={className} href="#" prefetch={false}>
+    <Link className={className} href={link} prefetch={false}>
       {icon}
     </Link>
   );
