@@ -39,7 +39,7 @@ export default async function MainLayout({
         <Link href="/feed" className="flex items-center gap-2" prefetch={false}>
           <GraduationCapIcon className="h-6 w-6 text-primary" />
         </Link>
-        <nav className="flex items-center gap-4 md:gap-6 bg-red-500">
+        <nav className="flex items-center gap-4 md:gap-6">
           {NavLinks.map((item, index) => (
             <NavItem key={index} icon={item.icon} link={item.link} />
           ))}
